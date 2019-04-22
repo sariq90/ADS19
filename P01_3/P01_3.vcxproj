@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{0680633A-9490-43BD-8759-0E9B7DDBBA00}</ProjectGuid>
-    <RootNamespace>P01</RootNamespace>
+    <ProjectGuid>{5E9A902F-D172-4A84-9391-88BD6EF18E66}</ProjectGuid>
+    <RootNamespace>P013</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -118,12 +118,10 @@
     <ClInclude Include="catch.hpp" />
     <ClInclude Include="List.h" />
     <ClInclude Include="Node.h" />
+    <ClInclude Include="tweet.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="List.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Node.cpp" />
-    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -15,10 +15,13 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="List.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="Node.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="List.h">
+    <ClInclude Include="tweet.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="catch.hpp">
@@ -26,16 +29,7 @@
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Node.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="List.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Test.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
