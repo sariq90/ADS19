@@ -172,7 +172,7 @@ double Graph::prim(int startKey)
 		sum += mst[i].weight;
 	}
 	return sum;
-}	
+}
 double Graph::kruskal()
 {
 	std::vector<int> marked;
@@ -181,34 +181,32 @@ double Graph::kruskal()
 	// number-flag nodes
 	for (int i = 0; i < _anzKnoten; ++i)
 		marked.push_back(i);
-	// iterate through components
-	//for (int c = 0; c < _components; ++c)
-	//{
-		// fill pq_heap
-		for (int i = 0; i < _gEdges.size(); ++i)
+
+	// fill pq_heap
+	for (int i = 0; i < _gEdges.size(); ++i)
+	{
+		//if (getNodeByKey(_gEdges[i].node1)->getComponent() == c)
+		pq.push(_gEdges[i]);
+	}
+	while (!pq.empty())
+	{
+		gEdge e = pq.top();
+		pq.pop();
+		int v = e.node1; int w = e.node2;
+		// for smallest edge, if subgraphs are not connected
+		if (marked[v] != marked[w])
 		{
-			//if (getNodeByKey(_gEdges[i].node1)->getComponent() == c)
-				pq.push(_gEdges[i]);
-		}
-		while (!pq.empty())
-		{
-			gEdge e = pq.top();
-			pq.pop();
-			int v = e.node1; int w = e.node2;
-			// for smallest edge, if subgraphs are not connected
-			if (marked[v] != marked[w])
+			mst.push_back(e);
+			int cmp = marked[w];
+			// re-flag absorbed nodes
+			for (int i = 0; i < _anzKnoten; ++i)
 			{
-				mst.push_back(e);
-				int cmp = marked[w];
-				// re-flag absorbed nodes
-				for (int i = 0; i < _anzKnoten; ++i)
-				{
-					if (marked[i] == cmp)
-						marked[i] = marked[v];
-				}
+				if (marked[i] == cmp)
+					marked[i] = marked[v];
 			}
 		}
-	//}
+	}
+
 	double sum = 0;
 	for (int i = 0; i < mst.size(); ++i)
 	{
