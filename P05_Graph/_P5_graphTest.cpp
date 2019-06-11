@@ -7,8 +7,8 @@
 * Änderungen untersagt!
 *************************************************/
 #include "catch.h"
-#include "graph.h"
-#include "graphNode.h"
+#include "Graph.h"
+#include "GraphNode.h"
 #include <string>
 #include <iostream>
 
@@ -65,36 +65,9 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 		}
 	}
 
-	SECTION("Breitensuche mit erstem Graphen") {
-
-		for (int i = 0; i < test1->getAnzKnoten(); i++) {
-			bool test = test1->breadthSearchIter(i);
-
-			REQUIRE(test == true);
-		}
-	}
-
-	SECTION("Breitensuche mit zweitem Graphen") {
-
-		for (int i = 0; i < test2->getAnzKnoten(); i++) {
-			bool test = test2->breadthSearchIter(i);
-
-			REQUIRE(test == true);
-		}
-	}
-
-	SECTION("Breitensuche mit drittem Graphen") {
-
-		for (int i = 0; i < test3->getAnzKnoten(); i++) {
-			bool test = test3->breadthSearchIter(i);
-
-			REQUIRE(test == false);
-		}
-	}
-
 	SECTION("Prim mit erstem Graph") {
 		for (int i = 0; i < test1->getAnzKnoten(); i++) {
-			int value = test1->prim(i);
+			int value = test1->prim(0);
 
 			REQUIRE(value == 39);
 		}
@@ -102,18 +75,10 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 
 	SECTION("Prim mit zweitem Graph") {
 		for (int i = 0; i < test2->getAnzKnoten(); i++) {
-			int value = test2->prim(i);
+			int value = test2->prim(0);
 
 			REQUIRE(value == 150);
 		}
-	}
-
-	SECTION("Prim mit dritten Graph ab Knoten 0 und 1") {
-		int value = test3->prim(0);
-		REQUIRE(value == 16);
-
-		value = test3->prim(1);
-		REQUIRE(value == 168);
 	}
 
 	SECTION("Kruskal mit erstem Graph") {
@@ -129,14 +94,6 @@ TEST_CASE("Graph Testing", "[Graph]" ) {
 			int value = test2->kruskal();
 
 			REQUIRE(value == 150);
-		}
-	}
-
-	SECTION("Kruskal mit drittem Graph") {
-		for (int i = 0; i < test3->getAnzKnoten(); i++) {
-			int value = test3->kruskal();
-
-			REQUIRE(value == 184);
 		}
 	}
 }

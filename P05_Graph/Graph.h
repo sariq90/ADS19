@@ -20,6 +20,7 @@ private:
 	bool _gew;
 	std::vector<GraphNode*> _nodes;
 	std::vector<gEdge> _gEdges;
+	//int _components;
 
 public:
 	Graph();

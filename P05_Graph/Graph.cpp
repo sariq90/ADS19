@@ -59,6 +59,7 @@ bool Graph::init(std::string path)
 					depthSearchRek(i, false, component);
 				}
 			}
+			//_components = component+1;
 		}
 		setAllUnvisited();
 		return true;
@@ -180,27 +181,34 @@ double Graph::kruskal()
 	// number-flag nodes
 	for (int i = 0; i < _anzKnoten; ++i)
 		marked.push_back(i);
-	// fill pq_heap
-	for (int i = 0; i < _gEdges.size(); ++i)
-		pq.push(_gEdges[i]);
-	while (!pq.empty())
-	{
-		gEdge e = pq.top();
-		pq.pop();
-		int v = e.node1; int w = e.node2;
-		// for smallest edge, if subgraphs are not connected
-		if (marked[v] != marked[w])
+	// iterate through components
+	//for (int c = 0; c < _components; ++c)
+	//{
+		// fill pq_heap
+		for (int i = 0; i < _gEdges.size(); ++i)
 		{
-			mst.push_back(e);
-			int cmp = marked[w];
-			// re-flag absorbed nodes
-			for (int i = 0; i < _anzKnoten; ++i)
+			//if (getNodeByKey(_gEdges[i].node1)->getComponent() == c)
+				pq.push(_gEdges[i]);
+		}
+		while (!pq.empty())
+		{
+			gEdge e = pq.top();
+			pq.pop();
+			int v = e.node1; int w = e.node2;
+			// for smallest edge, if subgraphs are not connected
+			if (marked[v] != marked[w])
 			{
-				if (marked[i] == cmp)
-					marked[i] = marked[v];
+				mst.push_back(e);
+				int cmp = marked[w];
+				// re-flag absorbed nodes
+				for (int i = 0; i < _anzKnoten; ++i)
+				{
+					if (marked[i] == cmp)
+						marked[i] = marked[v];
+				}
 			}
 		}
-	}
+	//}
 	double sum = 0;
 	for (int i = 0; i < mst.size(); ++i)
 	{
